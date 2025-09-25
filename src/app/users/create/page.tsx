@@ -1,5 +1,6 @@
 "use client";
 
+import SubmitButton from "@/components/SubmitButton";
 import { createUser } from "@/lib/actions";
 import { useRef } from "react";
 
@@ -32,9 +33,7 @@ const CreateUserPage = () => {
             placeholder="Enter email"
             className="input w-full mt-2 bg-white border border-black"
           />
-          <button className="btn btn-primary mt-4 btn-block" type="submit">
-            Create user
-          </button>
+          <SubmitButton />
         </form>
       </div>
     </div>
