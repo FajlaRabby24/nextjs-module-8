@@ -1,7 +1,7 @@
 "use server";
 
-import { dbConncect } from "./db";
-import User from "./models/User";
+import { dbConncect } from "../db";
+import User from "../models/User";
 
 export const createUser = async (formData: FormData) => {
   await dbConncect();

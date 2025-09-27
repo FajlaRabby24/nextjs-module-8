@@ -1,7 +1,7 @@
 "use client";
 
 import SubmitButton from "@/components/SubmitButton";
-import { createUser } from "@/lib/actions";
+import { createUser } from "@/lib/actions/user.actions";
 import { useRef } from "react";
 
 const CreateUserPage = () => {

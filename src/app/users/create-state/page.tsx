@@ -1,7 +1,7 @@
 "use client";
 
 import SubmitButton from "@/components/SubmitButton";
-import { createUserWithState } from "@/lib/actions";
+import { createUserWithState } from "@/lib/actions/user.actions";
 import { useActionState, useRef } from "react";
 
 const CreateUserWithStatePage = () => {
