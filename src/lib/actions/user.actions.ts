@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { dbConncect } from "../db";
 import User from "../models/User";
 
@@ -109,5 +110,23 @@ export const updateUser = async (
       message: "Error updating user",
       error: error instanceof Error ? error.message : "Unknow error",
     };
+  }
+};
+
+// delete user
+export const deleteUser = async (id: string): Promise<void> => {
+  await dbConncect();
+  try {
+    const deleteUser = await User.findByIdAndDelete(id);
+    if (!deleteUser) {
+      throw new Error("User not found");
+    }
+    revalidatePath("/users");
+    redirect("/users");
+  } catch (error) {
+    console.log("Error deleting user:", error);
+    throw new Error(
+      error instanceof Error ? error.message : "user deleting error"
+    );
   }
 };
