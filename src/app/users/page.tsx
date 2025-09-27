@@ -2,6 +2,15 @@ import { dbConncect } from "@/lib/db";
 import User from "@/lib/models/User";
 import Link from "next/link";
 
+interface UserProps {
+  _id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
 const getAllUsers = async () => {
   await dbConncect();
   const users = await User.find().lean();
@@ -15,11 +24,17 @@ const UsersPage = async () => {
     <div>
       <h1 className="mb-3 text-3xl font-semibold">All users</h1>
       <ul className="ml-6 space-y-3">
-        {users.map((user) => (
+        {users.map((user: UserProps) => (
           <li className="list-disc" key={user._id}>
             <p>Name: {user.name}</p>
             <p>Eamil: {user.email}</p>
-            <Link href={`/users/${user._id}/edit`}>Edit</Link>
+            <div className="mt-3">
+              <Link href={`/users/${user._id}/edit`}>
+                <button className="btn btn-primary">Edit</button>
+              </Link>
+
+              <button className="btn btn-error ml-2">Delete</button>
+            </div>
           </li>
         ))}
       </ul>
