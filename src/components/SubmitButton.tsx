@@ -1,3 +1,5 @@
+"use client";
+
 import { useFormStatus } from "react-dom";
 
 const SubmitButton = () => {
@@ -11,7 +13,7 @@ const SubmitButton = () => {
       {pending ? (
         <span className="loading text-black loading-spinner loading-sm"></span>
       ) : (
-        "Create user"
+        "Submit"
       )}{" "}
     </button>
   );
